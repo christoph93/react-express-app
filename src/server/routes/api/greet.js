@@ -3,7 +3,7 @@ import { Controller, Get } from '@decorators/express';
 @Controller('/')
 class Greet {
   constructor() {
-    this.greet = 'Greetings';
+    this.greet = 'Greetings Neco';
   }
 
   @Get('/greet')

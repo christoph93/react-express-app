@@ -1,5 +1,6 @@
 import path from 'path';
 
+import './db/db';
 import config from './config/config';
 import app from './bootstrap';
 

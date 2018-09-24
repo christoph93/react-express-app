@@ -13,6 +13,7 @@ globals:
   render: true
   mount: true
   fetch: true
+  db: true
 env:
   node: true
   jest/globals: true
