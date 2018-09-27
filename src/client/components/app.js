@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 
 import SampleStore from '../stores/sample-store';
+import Rates from './rates';
 
 import './app.scss';
 
@@ -35,14 +36,15 @@ class App extends React.Component {
 
   render() {
     const { greet } = this.state;
-    const { sampleStore } = this.props;
+    // const { sampleStore } = this.props;
 
     return (
       <div>
-        <h1>
-          React / Node.js - {greet} - {sampleStore.counter}
-        </h1>
+        <h1>React / Node.js - {greet}</h1>
         <h2>Boilerplate </h2>
+        <div>
+          <Rates />
+        </div>
       </div>
     );
   }
