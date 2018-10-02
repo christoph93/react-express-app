@@ -20,7 +20,7 @@ class Rates {
 
     this.rates = await proxiedRequest.get(url);
 
-    console.log('Sending rates...');
+    console.log(this.rates);
 
     return res.send(this.rates);
   }

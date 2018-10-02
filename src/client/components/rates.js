@@ -13,15 +13,20 @@ class Rates extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        symbol: 'MSFT',
+        symbol: 'BVMF: PETR4',
         apiFunction: 'TIME_SERIES_INTRADAY',
-        interval: '60min'
+        interval: '15min'
       })
     });
+    let newRates = '';
 
     console.log(response);
 
-    if (response.status !== 200) throw new Error('Error on API call');
+    if (response.status !== 200) {
+      this.setState({ rates: 'Error on API call. See console' });
+      throw new Error('Error on API call');
+    }
+
     const jsonResponse = await response.json();
 
     let timeSeriesName = '';
@@ -34,14 +39,17 @@ class Rates extends Component {
 
     const timeStamps = Object.keys(jsonResponse[timeSeriesName]);
     const intervals = jsonResponse[timeSeriesName];
-    let newRates = '';
 
     newRates = (
       <div>
         {timeStamps.map(e => (
           <li>
             {e}
-            <p> {JSON.stringify(intervals[e])} </p>
+            {Object.keys(intervals[e]).map(el => (
+              <p key={e.toString() + el.toString()}>
+                {el} {intervals[e][el]}
+              </p>
+            ))}
           </li>
         ))}
       </div>
